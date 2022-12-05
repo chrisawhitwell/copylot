@@ -55,11 +55,8 @@ def test(x,axis=0,v=None,alpha=0.05,method='mean'):
     runs = np.nansum((x>=x_m)*(x_p<x_m) + (x < x_m)*(x_p >= x_m),dtype='int64',axis=axis)
     n1 = np.nansum(x>= x_m,dtype='int64',axis=axis)
     n2 = len(x)-n1
-    print(n1)
-    print(n2)
     runs_exp = ((2*n1*n2)/(n1+n2))+1
     stan_dev = np.sqrt((2*n1*n2*(2*n1*n2-n1-n2))/(((n1+n2)**2)*(n1+n2-1)))
-    print(stan_dev)
     z = (runs-runs_exp)/stan_dev 
 
     stationary = abs(z) < stats.norm.ppf(1-alpha/2)
