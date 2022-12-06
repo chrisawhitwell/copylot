@@ -39,7 +39,6 @@ def test(x,axis=0,v=None,alpha=0.05,method='mean'):
 
     Assumes normal distribution
     """
-    print(x.shape)
     if v == None:
         if method == 'mean':
             x_m = np.nanmean(x,axis=axis)    
